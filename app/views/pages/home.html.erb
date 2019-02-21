@@ -1,1 +1,24 @@
 <h1>HOME</h1>
+
+<p>Now is <%= Time.now %><p>
+
+<% categories = [ 'japanese', 'indian', 'french' ] %>
+
+<h2>Find lots of restaurants</h2>
+<ol>
+<% categories.each do |category| %>
+  <li><%= category.capitalize %></li>
+<% end %>
+</ol>
+
+<form action="/restaurants" method="get">
+  <input type="text" name="food_type" placeholder="What kind of food?">
+  <input type="submit">
+</form>
+
+<form action="/restaurants" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="name" placeholder="Name">
+  <input type="text" name="address" placeholder="Address">
+  <input type="submit">
+</form>
